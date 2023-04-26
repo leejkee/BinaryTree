@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "bintree.h": "c",
+        "cstdio": "c",
+        "array.h": "c",
+        "stddef.h": "c",
+        "stdio.h": "c"
+    }
+}
