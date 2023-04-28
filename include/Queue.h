@@ -17,6 +17,6 @@ struct listqueue
 typedef struct listqueue *pqueue;
 #endif
 extern pqueue createQueue();
-// extern bool isEmpty(pqueue);
+extern bool nullQueue(pqueue);
 extern void enQueue(pqueue, ptreenode);
 extern ptreenode delQueue(pqueue);

@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <assert.h>
-/* 
+/*
  top = new Node
  count = 0
  Node.data = NULL
@@ -13,8 +13,8 @@ Stack *initStack()
     Stack *p_stack = (Stack *)malloc(sizeof(Stack));
     p_stack->top = (Node)malloc(sizeof(struct node));
     p_stack->count = 0;
-    // (p_stack->top) -> data = NULL;
-    (p_stack->top) -> data = 0;
+    (p_stack->top) -> data = NULL;
+    // (p_stack->top) -> data = 0;
     (p_stack->top) -> next = NULL;
     return p_stack;
 }
@@ -28,6 +28,7 @@ void pushStack(Stack *p_stack, Elem data)
     (p_stack->top) -> next = newNode;
     p_stack->count++;
 }
+
 void popStack(Stack *p_stack)
 {
     assert(p_stack != NULL);
@@ -37,6 +38,7 @@ void popStack(Stack *p_stack)
     p_stack->count--;
     free(delNode);
 }
+
 Elem topStack(Stack stack){
     return (stack.top->next)->data;
 }

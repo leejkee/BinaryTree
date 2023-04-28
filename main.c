@@ -7,19 +7,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 int main(void){
-	// void readData(pArr p_arr);
-	// pArr p_array = initArr();
-	// readData(p_array);
-	// printArr(*p_array);
-	// ptreenode Tree = createBintree(*p_array);
-	// delArr(p_array);
-	// // delTree(Tree);
-
-	
-
+	void readData(Array* p_arr);
+	Array* p_array = initArr();
+	readData(p_array);
+	printArr(*p_array);
+	ptreenode Tree = createBintree(*p_array);
+	delArr(p_array);
+	delTree(Tree);
 	return EXIT_SUCCESS;
 }
-void readData(pArr p_arr)
+void readData(Array* p_arr)
 {
 	FILE *pfile_data;
 	int icount_node = 0;

@@ -1,8 +1,8 @@
 #ifndef STACK_DEF
 #define STACK_DEF
 #include "BinTree.h"
-// typedef ptreenode Elem;
-typedef int Elem;
+typedef ptreenode Elem;
+// typedef int Elem;
 typedef struct node *Node;
 struct node
 {

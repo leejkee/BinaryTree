@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <assert.h>
 ptreenode createBintree(Array arr)
 {
 	ptreenode tree_root = NULL;
@@ -25,7 +26,7 @@ ptreenode createBintree(Array arr)
 		return NULL;
 	}
 	// 开始插入剩余的树结点，依次插入到左结点，右结点，直到队列为空，数值为0则表示空结点
-	while(queue->pfront != NULL && i_count_tree > 0){
+	while( (!nullQueue(queue)) && i_count_tree > 0 ){
 		tree = delQueue(queue);
 		if (*p_data == NO_NODE){
 			tree->left = NULL;
@@ -57,30 +58,21 @@ ptreenode createBintree(Array arr)
 
 void recDLR(ptreenode root)
 {
-	if (root == NULL)
-	{
-		return ;
-	}
+	assert(root != NULL);
 	printf("%d ", root->idata);
 	recDLR(root->left);
 	recDLR(root->right);
 }
 void recLDR(ptreenode root)
 {
-	if (root == NULL)
-	{
-		return ;
-	}
+	assert(root != NULL);
 	recDLR(root->left);
 	printf("%d ", root->idata);
 	recDLR(root->right);
 }
 void recLRD(ptreenode root)
 {
-	if (root == NULL)
-	{
-		return ;
-	}
+	assert(root != NULL);
 	recDLR(root->left);
 	recDLR(root->right);
 	printf("%d ", root->idata);
@@ -101,18 +93,14 @@ void iterLRD(ptreenode root)
 void getNumOfNode(ptreenode root)
 {
 }
-void delTree(ptreenode p_tree)
+void delTree(ptreenode root)
 {
-	if (p_tree == NULL){
-		return;
-	}
-	delTree(p_tree->left);
-	delTree(p_tree->right);
+	assert(root != NULL);
+	delTree(root->left);
+	delTree(root->right);
 }
 void printTree(ptreenode root, int space) {
-    if (root == NULL) {
-        return;
-    }
+	assert(root != NULL);
     // 增加间隔
     space += 5;
     // 打印当前节点

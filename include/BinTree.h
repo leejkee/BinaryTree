@@ -10,7 +10,6 @@ struct treenode {
 	ptreenode left, right;
 };
 #endif
-
 extern ptreenode createBintree(Array arr);
 
 extern void recDLR(ptreenode root);
