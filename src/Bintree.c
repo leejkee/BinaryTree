@@ -25,7 +25,7 @@ ptreenode createBintree(Array arr)
 		return NULL;
 	}
 	// 开始插入剩余的树结点，依次插入到左结点，右结点，直到队列为空，数值为0则表示空结点
-	while(isEmpty(queue) == false && i_count_tree > 0){
+	while(queue->pfront != NULL && i_count_tree > 0){
 		tree = delQueue(queue);
 		if (*p_data == NO_NODE){
 			tree->left = NULL;

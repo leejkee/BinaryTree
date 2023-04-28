@@ -3,19 +3,20 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 pqueue createQueue(){
 	pqueue new_queue = (pqueue)malloc(sizeof(struct listqueue));
 	new_queue->pfront = new_queue->prear = NULL;
 	return new_queue;
 }
-bool isEmpty(pqueue Q){
+/* bool isEmpty(pqueue Q){
 	if (Q->pfront == NULL){
 		return true;
 	}
 	else {
 		return false;
 	}
-}
+} */
 void enQueue(pqueue queue, ptreenode data)
 {
 	pqueuenode node = (pqueuenode)malloc(sizeof(struct queuenode));
@@ -24,7 +25,7 @@ void enQueue(pqueue queue, ptreenode data)
 	// 处理结点的插入
 	// 1)空队，需要让front和rear同时指向第一个结点
 	// 2)非空队，只需要插入后后移一次rear即可
-	if (isEmpty(queue)){
+	if (queue->pfront == NULL){
 		queue->pfront = node;
 		queue->prear = node;
 	}
@@ -39,7 +40,8 @@ ptreenode delQueue(pqueue queue)
 	// 2)非空 仅有一个结点的情况需要额外单独处理，其他就正常后移front即可
 	pqueuenode tmp_queue_node = NULL;
 	ptreenode addr_tree_node = NULL;
-	if (isEmpty(queue) == true){
+	/*rewrite*/
+	if (queue->pfront == NULL){
 		printf("The queue is empty");
 		exit(1);
 	}

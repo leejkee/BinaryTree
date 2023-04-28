@@ -10,13 +10,18 @@ struct treenode {
 	ptreenode left, right;
 };
 #endif
+
 extern ptreenode createBintree(Array arr);
+
 extern void recDLR(ptreenode root);
 extern void recLDR(ptreenode root);
 extern void recLRD(ptreenode root);
+
 extern void iterDLR(ptreenode root);
 extern void iterLDR(ptreenode root);
 extern void iterLRD(ptreenode root);
+
 extern void getNumOfNode(ptreenode root);
 extern void printTree(ptreenode root, int space);
+
 extern void delTree(ptreenode p_tree);

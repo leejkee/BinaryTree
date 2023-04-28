@@ -8,7 +8,7 @@ struct queuenode{
 	ptreenode pdata;
 	pqueuenode next;
 };
-// 队列的操作需要两个指向头节点和尾结点的指针变量，所以定义一个queue结构体包含头尾指针
+// 队列的操作需要两个指向头节点和尾结点的指针变量，所以定义一个queue结构体包含头尾指针，单链表的尾部无法进行删除操作，
 struct listqueue
 {
 	pqueuenode pfront;
@@ -17,6 +17,6 @@ struct listqueue
 typedef struct listqueue *pqueue;
 #endif
 extern pqueue createQueue();
-extern bool isEmpty(pqueue);
+// extern bool isEmpty(pqueue);
 extern void enQueue(pqueue, ptreenode);
 extern ptreenode delQueue(pqueue);

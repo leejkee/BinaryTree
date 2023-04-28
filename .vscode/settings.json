@@ -4,6 +4,8 @@
         "cstdio": "c",
         "array.h": "c",
         "stddef.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "queue.h": "c",
+        "assert.h": "c"
     }
 }

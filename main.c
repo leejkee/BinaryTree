@@ -3,21 +3,20 @@
 // 二叉树递归遍历，非递归遍历
 #include "include/BinTree.h"
 #include "include/Array.h"
+#include "include/Stack.h"
 #include <stdio.h>
 #include <stdlib.h>
 int main(void){
-	void readData(pArr p_arr);
-	pArr p_array = initArr();
-	readData(p_array);
-	printArr(*p_array);
-	ptreenode Tree = createBintree(*p_array);
-	delArr(p_array);
-	getNumOfNode(Tree);
-	// printTree(Tree, 0);
-	// recDLR(Tree);
-	// recLDR(Tree);
-	// recLRD(Tree);
-	// delTree(Tree);
+	// void readData(pArr p_arr);
+	// pArr p_array = initArr();
+	// readData(p_array);
+	// printArr(*p_array);
+	// ptreenode Tree = createBintree(*p_array);
+	// delArr(p_array);
+	// // delTree(Tree);
+
+	
+
 	return EXIT_SUCCESS;
 }
 void readData(pArr p_arr)
