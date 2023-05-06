@@ -4,23 +4,24 @@
 // 用0表示空结点
 #define NO_NODE 0
 // 定义二叉树的结点，其中包含数据和左右子结点的地址
-typedef struct treenode *ptreenode;
+typedef struct treenode TreeNode;
 struct treenode {
-	int idata;
-	ptreenode left, right;
+	int data;
+	TreeNode* left;
+	TreeNode* right;
 };
 #endif
-extern ptreenode createBintree(Array arr);
+extern TreeNode* createBintree(Array arr);
 
-extern void recDLR(ptreenode root);
-extern void recLDR(ptreenode root);
-extern void recLRD(ptreenode root);
+extern void recDLR(TreeNode* root);
+extern void recLDR(TreeNode* root);
+extern void recLRD(TreeNode* root);
 
-extern void iterDLR(ptreenode root);
-extern void iterLDR(ptreenode root);
-extern void iterLRD(ptreenode root);
+extern void iterDLR(TreeNode* root);
+extern void iterLDR(TreeNode* root);
+extern void iterLRD(TreeNode* root);
 
-extern void getNumOfNode(ptreenode root);
-extern void printTree(ptreenode root, int space);
+extern void getNumOfNode(TreeNode* root);
+extern void printTree(TreeNode* root, int space);
 
-extern void delTree(ptreenode p_tree);
+extern void delTree(TreeNode* p_tree);

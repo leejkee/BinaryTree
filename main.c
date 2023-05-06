@@ -11,7 +11,7 @@ int main(void){
 	Array* p_array = initArr();
 	readData(p_array);
 	printArr(*p_array);
-	ptreenode Tree = createBintree(*p_array);
+	TreeNode* Tree = createBintree(*p_array);
 	delArr(p_array);
 	delTree(Tree);
 	return EXIT_SUCCESS;
@@ -19,14 +19,15 @@ int main(void){
 void readData(Array* p_arr)
 {
 	FILE *pfile_data;
-	int icount_node = 0;
+	int i_count = 0;
+	// function fopen() must be executed, so function assert() cannot be used.
 	if (!(pfile_data = fopen("data.txt", "r"))){
 		printf("Error!!!Reading failed!!!\n");
-		exit(1);
+		return;
 	}
-	fscanf(pfile_data, "%d", &icount_node);
-	setLenArr(icount_node, p_arr);
-	for (int i = 0; i < icount_node; i++){
-		fscanf(pfile_data, "%d", p_arr->data + i);
+	fscanf(pfile_data, "%d", &i_count);
+	setLenArr(i_count, p_arr);
+	for (int i = 0; i < i_count; i++){
+		fscanf(pfile_data, "%d", p_arr->arr_data + i);
 	}
 }
