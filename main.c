@@ -12,6 +12,7 @@ int main(void){
 	readData(p_array);
 	printArr(*p_array);
 	TreeNode* Tree = createBintree(*p_array);
+	LeOrder(Tree);
 	delArr(p_array);
 	delTree(Tree);
 	return EXIT_SUCCESS;

@@ -87,6 +87,8 @@ void recLRD(TreeNode* root)
 	recDLR(root->right);
 	printf("%d ", root->data);
 }
+
+// 层序遍历
 void LeOrder(TreeNode* root)
 {
 	if (root == NULL)
@@ -94,9 +96,18 @@ void LeOrder(TreeNode* root)
 		return ;
 	}
 	TreeNode* tree_node = NULL;
-	Queue* queue = createQueue();
-	
+	Queue* p_queue = createQueue();
+	enQueue(p_queue, root);
+	while (!nullQueue(p_queue))
+	{
+		tree_node = delQueue(p_queue);
+		printf("%d ", tree_node->data);
+		enQueue(p_queue, tree_node->left);
+		enQueue(p_queue, tree_node->right);
+	}
 }
+
+// 非递归遍历
 void iterDLR(TreeNode* root)// data left right
 {
 	assert(root != NULL);

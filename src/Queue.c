@@ -20,6 +20,10 @@ bool nullQueue(Queue* p_queue){
 }
 void enQueue(Queue* p_queue, TreeNode* data)
 {
+	if (data == NULL)
+	{
+		return ;
+	}
 	QNode* node = (QNode*)malloc(sizeof(struct queuenode));
 	node->tree_data = data;
 	node->next = NULL;

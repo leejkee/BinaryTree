@@ -13,6 +13,7 @@ struct treenode {
 #endif
 extern TreeNode* createBintree(Array arr);
 
+extern void LeOrder(TreeNode* root);
 extern void recDLR(TreeNode* root);
 extern void recLDR(TreeNode* root);
 extern void recLRD(TreeNode* root);
