@@ -54,6 +54,7 @@ TreeNode* createBintree(Array arr)
 			count_root--;
 		}
 	}
+	freeQueue(queue);
 	return tree_root;
 }
 
@@ -105,6 +106,7 @@ void LeOrder(TreeNode* root)
 		enQueue(p_queue, tree_node->left);
 		enQueue(p_queue, tree_node->right);
 	}
+	freeQueue(p_queue);
 }
 
 // 非递归遍历
