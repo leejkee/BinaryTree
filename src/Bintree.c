@@ -59,7 +59,7 @@ TreeNode* createBintree(Array arr)
 
 void recDLR(TreeNode* root)
 {
-	if (root != NULL)
+	if (root == NULL)
 	{
 		return ;
 	}
@@ -69,7 +69,7 @@ void recDLR(TreeNode* root)
 }
 void recLDR(TreeNode* root)
 {
-	if (root != NULL)
+	if (root == NULL)
 	{
 		return ;
 	}
@@ -79,7 +79,7 @@ void recLDR(TreeNode* root)
 }
 void recLRD(TreeNode* root)
 {
-	if (root != NULL)
+	if (root == NULL)
 	{
 		return ;
 	}
@@ -87,17 +87,29 @@ void recLRD(TreeNode* root)
 	recDLR(root->right);
 	printf("%d ", root->data);
 }
+void LeOrder(TreeNode* root)
+{
+	if (root == NULL)
+	{
+		return ;
+	}
+	TreeNode* tree_node = NULL;
+	Queue* queue = createQueue();
+	
+}
 void iterDLR(TreeNode* root)// data left right
 {
-
-
+	assert(root != NULL);
+	
 }
 void iterLDR(TreeNode* root)
 {
+	assert(root != NULL);
 
 }
 void iterLRD(TreeNode* root)
 {
+	assert(root != NULL);
 
 }
 void getNumOfNode(TreeNode* root)

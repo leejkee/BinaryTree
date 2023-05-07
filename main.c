@@ -16,18 +16,19 @@ int main(void){
 	delTree(Tree);
 	return EXIT_SUCCESS;
 }
+
 void readData(Array* p_arr)
 {
 	FILE *pfile_data;
-	int i_count = 0;
+	int count = 0;
 	// function fopen() must be executed, so function assert() cannot be used.
 	if (!(pfile_data = fopen("data.txt", "r"))){
 		printf("Error!!!Reading failed!!!\n");
 		return;
 	}
-	fscanf(pfile_data, "%d", &i_count);
-	setLenArr(i_count, p_arr);
-	for (int i = 0; i < i_count; i++){
+	fscanf(pfile_data, "%d", &count);
+	setLenArr(count, p_arr);
+	for (int i = 0; i < count; i++){
 		fscanf(pfile_data, "%d", p_arr->arr_data + i);
 	}
 }
