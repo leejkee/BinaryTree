@@ -32,4 +32,5 @@ void readData(Array* p_arr)
 	for (int i = 0; i < count; i++){
 		fscanf(pfile_data, "%d", p_arr->arr_data + i);
 	}
+	fclose(pfile_data);
 }

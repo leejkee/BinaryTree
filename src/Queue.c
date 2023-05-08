@@ -24,7 +24,7 @@ void enQueue(Queue* p_queue, TreeNode* data)
 	{
 		return ;
 	}
-	QNode* node = (QNode*)malloc(sizeof(struct queuenode));
+	QNode* node = (QNode*)malloc(sizeof(QNode));
 	node->tree_data = data;
 	node->next = NULL;
 	// 处理结点的插入

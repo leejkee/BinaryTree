@@ -130,25 +130,25 @@ void getNumOfNode(TreeNode* root)
 }
 void delTree(TreeNode* root)
 {
-	if(root != NULL){
+	if(root == NULL){
 		return;
 	}
 	delTree(root->left);
 	delTree(root->right);
+	free(root);
 }
 // to be re
-void printTree(TreeNode* root, int space) {
-	assert(root != NULL);
-    // 增加间隔
-    space += 5;
-    // 打印当前节点
-    for (int i = 5; i < space; i++) {
-        printf(" ");
-    }
-    printf("%d\n", root->data);
-	printf("\n");
-    // 打印右子树
-    printTree(root->right, space);
-    // 打印左子树
-    printTree(root->left, space);
-}
+// void printTree(TreeNode* root, int space) {
+//     // 增加间隔
+//     space += 5;
+//     // 打印当前节点
+//     for (int i = 5; i < space; i++) {
+//         printf(" ");
+//     }
+//     printf("%d\n", root->data);
+// 	printf("\n");
+//     // 打印右子树
+//     printTree(root->right, space);
+//     // 打印左子树
+//     printTree(root->left, space);
+// }

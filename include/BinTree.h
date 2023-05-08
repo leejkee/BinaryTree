@@ -23,6 +23,6 @@ extern void iterLDR(TreeNode* root);
 extern void iterLRD(TreeNode* root);
 
 extern void getNumOfNode(TreeNode* root);
-extern void printTree(TreeNode* root, int space);
+// extern void printTree(TreeNode* root, int space);
 
 extern void delTree(TreeNode* p_tree);
