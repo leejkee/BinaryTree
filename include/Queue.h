@@ -20,4 +20,5 @@ extern Queue* createQueue();
 extern bool nullQueue(Queue* p_queue);
 extern void enQueue(Queue* p_queue, TreeNode* data);
 extern TreeNode* delQueue(Queue* p_queue);
+extern int getNumQueue(Queue* p_queue);
 extern void freeQueue(Queue * p_queue);

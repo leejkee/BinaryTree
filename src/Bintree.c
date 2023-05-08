@@ -11,7 +11,6 @@ TreeNode* createBintree(Array arr)
 {
 	TreeNode* tree_root = NULL;
 	TreeNode* tree_node = NULL;
-	int count_root = arr.len-1;
 	int *array_data = arr.arr_data;
 	Queue* queue = createQueue();
 	// 第一个数据为0即代表空树，直接返回null即可，不为空则为其申请一个结点的空间并将结点地址入队
@@ -27,32 +26,32 @@ TreeNode* createBintree(Array arr)
 		return NULL;
 	}
 	// 开始插入剩余的树结点，依次插入到左结点，右结点，直到队列为空，数值为0则表示空结点
-	while( (!nullQueue(queue)) && count_root > 0 ){
+	for ( int i = 0; i < arr.len-1 && (!nullQueue(queue)); ){
 		tree_node = delQueue(queue);
-		if (*array_data == NO_NODE){
+		if (array_data[i] == NO_NODE){
 			tree_node->left = NULL;
-			array_data++;
-			count_root--;
 		}
 		else {
 			tree_node->left = (TreeNode*)malloc(sizeof(TreeNode));
-			tree_node->left->data = *array_data++;
+			tree_node->left->data = array_data[i];
 			tree_node->left->left = tree_node->left->right = NULL;
 			enQueue(queue, tree_node->left);
-			count_root--;
 		}
-		if (*array_data == NO_NODE){
+		i++;
+		if (i >= arr.len-1)
+		{
+			break;
+		}
+		if (array_data[i] == NO_NODE){
 			tree_node->right = NULL;
-			array_data++;
-			count_root--;
 		}
 		else {
 			tree_node->right = (TreeNode*)malloc(sizeof(TreeNode));
-			tree_node->right->data = *array_data++;
+			tree_node->right->data = array_data[i];
 			tree_node->right->left = tree_node->right->right = NULL;
 			enQueue(queue, tree_node->right);
-			count_root--;
 		}
+		i++;
 	}
 	freeQueue(queue);
 	return tree_root;
@@ -125,6 +124,46 @@ void iterLRD(TreeNode* root)
 	assert(root != NULL);
 
 }
+// 递归求树高度
+int recGetHeightTree(TreeNode* root)
+{
+	if (root == NULL)
+	{
+		return 0;
+	}
+	if (root->left == NULL && root->right == NULL)
+	{
+		return 1;
+	}
+	return recGetHeightTree(root->left) > recGetHeightTree(root->right) ? recGetHeightTree(root->left) + 1 : recGetHeightTree(root->right) + 1;
+}
+// 迭代算法求树高度
+// 第一次入列根结点，统计到队列中一个元素，即最顶层只有一个元素
+// 入队根节点的子结点多少个，第二层就有多少个结点，再在出队操作之前统计一次，即可控制每层结点出队完毕就讲高度加1
+int iterGetHeightTree(TreeNode* root)
+{
+	if (root == NULL)
+	{
+		return 0;
+	}
+	int height_tree = 0;
+	TreeNode* tree_node = NULL;
+	Queue* p_queue = createQueue();
+	enQueue(p_queue, root);
+	while (!nullQueue(p_queue))
+	{
+		int count_queue = getNumQueue(p_queue);
+		while(count_queue--)
+		{
+			tree_node = delQueue(p_queue);
+			enQueue(p_queue, tree_node->left);
+			enQueue(p_queue, tree_node->right);
+		}
+		height_tree++;
+	}
+	freeQueue(p_queue);
+	return height_tree;
+}
 void getNumOfNode(TreeNode* root)
 {
 }
@@ -136,6 +175,7 @@ void delTree(TreeNode* root)
 	delTree(root->left);
 	delTree(root->right);
 	free(root);
+	root = NULL;
 }
 // to be re
 // void printTree(TreeNode* root, int space) {
@@ -152,3 +192,19 @@ void delTree(TreeNode* root)
 //     // 打印左子树
 //     printTree(root->left, space);
 // }
+void printTree(TreeNode * root, int level)
+{
+	// 若节点为空，返回
+    if (root == NULL) {
+        return;
+    }
+    // 打印右子树
+    printTree(root->right, level + 1);
+    // 打印该节点
+    for (int i = 0; i < level; i++) {
+        printf("    ");
+    }
+    printf("%d\n", root->data);
+    // 打印左子树
+    printTree(root->left, level + 1);
+}

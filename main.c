@@ -13,6 +13,11 @@ int main(void){
 	printArr(*p_array);
 	TreeNode* Tree = createBintree(*p_array);
 	LeOrder(Tree);
+	printf("\n");
+	// printTree(Tree, 0);
+	recDLR(Tree);
+	// int a = recGetHeightTree(Tree);
+	// int b = iterGetHeightTree(Tree);
 	delArr(p_array);
 	delTree(Tree);
 	return EXIT_SUCCESS;

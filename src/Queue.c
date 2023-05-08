@@ -56,9 +56,23 @@ TreeNode* delQueue(Queue* p_queue)
 		p_queue->front = p_queue->front->next;
 	}
 	free(tmp_queue_node);
+	tmp_queue_node = NULL;
 	return addr_tree_node;
 }
 
+int getNumQueue(Queue* p_queue)
+{
+	if (nullQueue(p_queue))
+	{
+		return 0;
+	}
+	int num_queue = 1;
+	for (QNode* iter = p_queue->front; iter != p_queue->rear; iter = iter->next)
+	{
+		num_queue++;
+	}
+	return num_queue;
+}
 void freeQueue(Queue * p_queue)
 {
 	if (p_queue == NULL)
@@ -73,4 +87,5 @@ void freeQueue(Queue * p_queue)
 		}
 	}
 	free(p_queue);
+	p_queue = NULL;
 }

@@ -25,6 +25,8 @@ void delArr(Array* p_arr)
 {
     if (p_arr->arr_data != NULL){
         free(p_arr->arr_data);
+        p_arr->arr_data = NULL;
     }
     free(p_arr);
+    p_arr = NULL;
 }
