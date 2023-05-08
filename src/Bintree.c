@@ -57,6 +57,7 @@ TreeNode* createBintree(Array arr)
 	return tree_root;
 }
 
+// 先序遍历
 void recDLR(TreeNode* root)
 {
 	if (root == NULL)
@@ -67,6 +68,7 @@ void recDLR(TreeNode* root)
 	recDLR(root->left);
 	recDLR(root->right);
 }
+// 中序遍历
 void recLDR(TreeNode* root)
 {
 	if (root == NULL)
@@ -77,6 +79,7 @@ void recLDR(TreeNode* root)
 	printf("%d ", root->data);
 	recDLR(root->right);
 }
+// 后序遍历
 void recLRD(TreeNode* root)
 {
 	if (root == NULL)
