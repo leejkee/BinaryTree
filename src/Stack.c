@@ -46,7 +46,7 @@ void popStack(Stack* p_stack)
 }
 bool nullStack(Stack* p_stack)
 {
-    if (p_stack->top->next == NULL)
+    if (p_stack->top->next == NULL || p_stack->count == 0)
     {
         return true;
     }
