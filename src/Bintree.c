@@ -1,6 +1,7 @@
 #include "../include/BinTree.h"
 #include "../include/Queue.h"
 #include "../include/Array.h"
+#include "../include/Stack.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -115,17 +116,17 @@ void LeOrder(TreeNode* root)
 void iterDLR(TreeNode* root)// data left right
 {
 	assert(root != NULL);
-	
+	Stack* p_stack = initStack();
+	TreeNode* tree_node = NULL;
+	pushStack(p_stack, root);
 }
 void iterLDR(TreeNode* root)
 {
 	assert(root != NULL);
-
 }
 void iterLRD(TreeNode* root)
 {
 	assert(root != NULL);
-
 }
 // 递归求树高度
 int recGetHeightTree(TreeNode* root)

@@ -10,7 +10,6 @@ struct treenode {
 	TreeNode* left;
 	TreeNode* right;
 };
-#endif
 extern TreeNode* createBintree(Array arr);
 
 extern void LeOrder(TreeNode* root);
@@ -28,3 +27,4 @@ extern int iterGetHeightTree(TreeNode* root);
 extern void printTree(TreeNode* root, int level);
 
 extern void delTree(TreeNode* p_tree);
+#endif

@@ -1,17 +1,16 @@
 #ifndef STACK_DEF
 #define STACK_DEF
 #include "BinTree.h"
-
 typedef TreeNode* Elem;
-typedef struct node *Node;
+typedef struct node Node;
 struct node
 {
     Elem data;
-    Node next;
+    Node* next;
 };
 struct stack
 {
-    Node top;
+    Node* top;// top指向的内存不存储数据
     int count;
 };
 typedef struct stack Stack;
