@@ -2,22 +2,21 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <stdbool.h>
 
 /*
 malloc:
 p_stack:
-    Node *top
+    SNode *top
     int count = 0
 
 top:
     TreeNode* data = NULL
-    Node* next = NULL
+    SNode* next = NULL
 */
 Stack *initStack()
 {
     Stack *p_stack = (Stack *)malloc(sizeof(Stack));
-    p_stack->top = (Node*)malloc(sizeof(struct node));
+    p_stack->top = (SNode*)malloc(sizeof(struct stacknode));
     p_stack->count = 0;
     (p_stack->top) -> data = NULL;
     // (p_stack->top) -> data = 0;
@@ -25,10 +24,13 @@ Stack *initStack()
     return p_stack;
 }
 
-void pushStack(Stack *p_stack, Elem data)
+void pushStack(Stack *p_stack, TreeNode* data)
 {
     assert(p_stack != NULL);
-    Node* newNode = (Node*)malloc(sizeof(struct node));
+    if (data == NULL){
+        return ;
+    }
+    SNode* newNode = (SNode*)malloc(sizeof(struct stacknode));
     newNode->data = data;
     newNode->next = (p_stack->top) -> next;
     (p_stack->top) -> next = newNode;
@@ -38,8 +40,7 @@ void pushStack(Stack *p_stack, Elem data)
 void popStack(Stack* p_stack)
 {
     assert(p_stack != NULL);
-    assert((p_stack->top) -> next);
-    Node* delNode = (p_stack->top) -> next;
+    SNode* delNode = (p_stack->top) -> next;
     (p_stack->top) -> next = (p_stack->top)->next -> next;
     p_stack->count--;
     free(delNode);
@@ -55,7 +56,22 @@ bool nullStack(Stack* p_stack)
         return false;
     }
 }
-
-Elem topStack(Stack stack){
+void freeStack(Stack * p_stack)
+{
+    if (p_stack == NULL)
+    {
+        return ;
+    }
+    int count = p_stack->count;
+    SNode* stack_node = p_stack->top->next;
+    while (count--)
+    {
+        free(stack_node);
+    }
+    free(p_stack->top);
+    free(p_stack);
+    p_stack = NULL;
+}
+TreeNode* topStack(Stack stack){
     return (stack.top->next)->data;
 }

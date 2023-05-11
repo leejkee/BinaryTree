@@ -1,21 +1,24 @@
 #ifndef STACK_DEF
 #define STACK_DEF
 #include "BinTree.h"
-typedef TreeNode* Elem;
-typedef struct node Node;
-struct node
+#include <stdbool.h>
+
+typedef struct stacknode SNode;
+struct stacknode
 {
-    Elem data;
-    Node* next;
+    TreeNode* data;
+    SNode* next;
 };
 struct stack
 {
-    Node* top;// top指向的内存不存储数据
+    SNode* top;// top指向的内存不存储数据
     int count;
 };
 typedef struct stack Stack;
 extern Stack *initStack();
-extern void pushStack(Stack *p_stack, Elem data);
+extern void pushStack(Stack *p_stack, TreeNode* data);
 extern void popStack(Stack *p_stack);
-extern Elem topStack(Stack stack);
+extern TreeNode* topStack(Stack stack);
+extern bool nullStack(Stack* p_stack);
+extern void freeStack(Stack* p_stack);
 #endif

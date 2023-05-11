@@ -119,6 +119,16 @@ void iterDLR(TreeNode* root)// data left right
 	Stack* p_stack = initStack();
 	TreeNode* tree_node = NULL;
 	pushStack(p_stack, root);
+	while (!nullStack(p_stack))
+	{
+		tree_node = topStack(*p_stack);
+		// printf("iterDLR:\n");
+		printf("%d ", tree_node->data);
+		popStack(p_stack);
+		pushStack(p_stack, tree_node->right);
+		pushStack(p_stack, tree_node->left);
+	}
+	freeStack(p_stack);
 }
 void iterLDR(TreeNode* root)
 {
