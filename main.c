@@ -6,19 +6,34 @@
 #include "include/Stack.h"
 #include <stdio.h>
 #include <stdlib.h>
-int main(void){
-	void readData(Array* p_arr);
-	Array* p_array = initArr();
+#include <time.h>
+int main(void)
+{
+	void readData(Array * p_arr);
+	Array *p_array = initArr();
 	readData(p_array);
 	printArr(*p_array);
-	TreeNode* Tree = createBintree(*p_array);
+	TreeNode *Tree = createBintree(*p_array);
 	LeOrder(Tree);
-	printf("\nrecDLR:\n");
+	printf("\nrecLRD:\n");
 	// printTree(Tree, 0);
 	recDLR(Tree);
 	printf("\niterDLR:\n");
 	iterDLR(Tree);
-	printf("\n");
+	printf("\nDLRnew:\n");
+	iterDLRnew(Tree);
+	// printf("\nrecLDR:\n");
+	// recLDR(Tree);
+	// printf("\n");
+	// printf("\niterLDR:\n");
+	// iterLDR(Tree);
+	// printf("\n");
+	// printf("\nrecLRD:\n");
+	// recLRD(Tree);
+	// printf("\n");
+	// printf("\niterLRD:\n");
+	// // iterLRD(Tree);
+	// printf("\n");
 	// int a = recGetHeightTree(Tree);
 	// int b = iterGetHeightTree(Tree);
 	delArr(p_array);
@@ -26,18 +41,20 @@ int main(void){
 	return EXIT_SUCCESS;
 }
 
-void readData(Array* p_arr)
+void readData(Array *p_arr)
 {
 	FILE *pfile_data;
 	int count = 0;
 	// function fopen() must be executed, so function assert() cannot be used.
-	if (!(pfile_data = fopen("data.txt", "r"))){
+	if (!(pfile_data = fopen("data.txt", "r")))
+	{
 		printf("Error!!!Reading failed!!!\n");
 		return;
 	}
 	fscanf(pfile_data, "%d", &count);
 	setLenArr(count, p_arr);
-	for (int i = 0; i < count; i++){
+	for (int i = 0; i < count; i++)
+	{
 		fscanf(pfile_data, "%d", p_arr->arr_data + i);
 	}
 	fclose(pfile_data);

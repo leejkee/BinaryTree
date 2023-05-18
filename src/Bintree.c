@@ -76,9 +76,9 @@ void recLDR(TreeNode* root)
 	{
 		return ;
 	}
-	recDLR(root->left);
+	recLDR(root->left);
 	printf("%d ", root->data);
-	recDLR(root->right);
+	recLDR(root->right);
 }
 // 后序遍历
 void recLRD(TreeNode* root)
@@ -87,8 +87,8 @@ void recLRD(TreeNode* root)
 	{
 		return ;
 	}
-	recDLR(root->left);
-	recDLR(root->right);
+	recLRD(root->left);
+	recLRD(root->right);
 	printf("%d ", root->data);
 }
 
@@ -112,7 +112,7 @@ void LeOrder(TreeNode* root)
 	freeQueue(p_queue);
 }
 
-// 非递归遍历
+// 非递归遍历 递归翻译写法
 void iterDLR(TreeNode* root)// data left right
 {
 	assert(root != NULL);
@@ -122,21 +122,81 @@ void iterDLR(TreeNode* root)// data left right
 	while (!nullStack(p_stack))
 	{
 		tree_node = topStack(*p_stack);
-		// printf("iterDLR:\n");
 		printf("%d ", tree_node->data);
 		popStack(p_stack);
 		pushStack(p_stack, tree_node->right);
-		pushStack(p_stack, tree_node->left);
+		pushStack(p_stack, tree_node->left);// 若先压入左子树，则得到的是逆后序
 	}
 	freeStack(p_stack);
+}
+// 直接迭代写法
+void iterDLRnew(TreeNode* root)
+{
+	Stack* p_stack = initStack();
+	TreeNode* tree_node = root;
+	while(tree_node || !nullStack(p_stack))
+	{
+		if (tree_node != NULL)
+		{
+			pushStack(p_stack, tree_node);
+		    printf("%d ", tree_node->data);
+			tree_node = tree_node->left;
+		}
+		else
+		{
+			tree_node = topStack(*p_stack)->right;
+			popStack(p_stack);
+		}
+	}
 }
 void iterLDR(TreeNode* root)
 {
 	assert(root != NULL);
+	Stack* p_stack = initStack();
+	TreeNode* tree_node = root;
+	// pushStack(p_stack, root);
+	while (tree_node || (!nullStack(p_stack)))
+	{
+		// 一直沿着左子树向下，直到叶子结点，这时入栈停止，准备弹出一个结点，第一个弹出的也就是中序遍历最先遍历的最下面的左子叶子结点
+		while (tree_node)
+		{
+			pushStack(p_stack, tree_node);
+			tree_node = tree_node->left;
+		}
+		tree_node = topStack(*p_stack);
+		printf("%d ", tree_node->data);
+		popStack(p_stack);
+		tree_node = tree_node->right;
+	}
 }
 void iterLRD(TreeNode* root)
 {
 	assert(root != NULL);
+	Stack *p_stack = initStack();
+	// tree_node是当前访问的结点，pre_node是上一次遍历的结点，cur_node是弹出的栈顶元素
+	TreeNode *tree_node = root, *pre_node = NULL, *cur_node = NULL;
+	while (tree_node || !nullStack(p_stack))
+	{
+		while (tree_node)
+		{
+			pushStack(p_stack, tree_node);
+			tree_node = tree_node->left;
+		}
+		// 处理遍历结点的情形，已经经过了该树的左孩子和右孩子之后再次返回该结点，才遍历该结点
+		// 树是一个递归的定义，看似直接遍历的叶子结点，其实也是先经过了它的两个空的左右孩子
+		cur_node = topStack(*p_stack); 
+		if (cur_node->right == NULL || cur_node->right == pre_node)
+		{
+			printf("%d ", cur_node->data);
+			popStack(p_stack);
+			pre_node = cur_node;
+			tree_node = NULL;// 弹出元素后需要接着判断栈顶元素是否是需要遍历的结点
+		}
+		else
+		{
+			tree_node = cur_node->right;
+		}
+	}
 }
 // 递归求树高度
 int recGetHeightTree(TreeNode* root)
@@ -178,6 +238,7 @@ int iterGetHeightTree(TreeNode* root)
 	freeQueue(p_queue);
 	return height_tree;
 }
+// 递归算法实现，迭代算法同上
 void getNumOfNode(TreeNode* root)
 {
 }

@@ -6,6 +6,7 @@
         "stddef.h": "c",
         "stdio.h": "c",
         "queue.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "time.h": "c"
     }
 }

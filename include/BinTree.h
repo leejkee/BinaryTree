@@ -17,6 +17,7 @@ extern void recDLR(TreeNode* root);
 extern void recLDR(TreeNode* root);
 extern void recLRD(TreeNode* root);
 
+extern void iterDLRnew(TreeNode* root);
 extern void iterDLR(TreeNode* root);
 extern void iterLDR(TreeNode* root);
 extern void iterLRD(TreeNode* root);
