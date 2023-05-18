@@ -27,13 +27,10 @@ int main(void)
 	// printf("\n");
 	// printf("\niterLDR:\n");
 	// iterLDR(Tree);
-	// printf("\n");
-	// printf("\nrecLRD:\n");
-	// recLRD(Tree);
-	// printf("\n");
-	// printf("\niterLRD:\n");
-	// // iterLRD(Tree);
-	// printf("\n");
+	printf("\nrecLRD:\n");
+	recLRD(Tree);
+	printf("\niterLRD:\n");
+	iterLRD(Tree);
 	// int a = recGetHeightTree(Tree);
 	// int b = iterGetHeightTree(Tree);
 	delArr(p_array);
