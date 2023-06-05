@@ -1,12 +1,21 @@
-main:Queue.o Bintree.o Array.o Stack.o
-	gcc -o main -g main.c Queue.o Bintree.o Array.o Stack.o
-Queue.o:
-	gcc -c src/Queue.c
-Bintree.o:
-	gcc -c src/Bintree.c
-Array.o:
-	gcc -c src/Array.c
-Stack.o:
-	gcc -c src/Stack.c
+CC = gcc
+OBJDIR = obj
+SRCDIR = src
+SOURCES = $(wildcard $(SRCDIR)/*.c) main.c
+OBJECTS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(filter-out main.c, $(SOURCES))) $(OBJDIR)/main.o
+EXECUTABLE = main
+CFLAGS = -c -Wall
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $^ -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) $< -o $@
+
+$(OBJDIR)/main.o: main.c
+	$(CC) $(CFLAGS) $< -o $@
+
 clean:
-	rm -f *.o
+	rm -f $(OBJDIR)/*.o $(EXECUTABLE)
